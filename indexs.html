@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITZONE - Premium Ethiopian Clothing Store | Nationwide Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+     <link rel="stylesheet" href="stayle.css">
+</head>
+
+<body>
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+        <div class="container discount-content">
+            <div class="banner-text">
+                <i class="fas fa-bolt"></i> FLASH SALE: 30% OFF Ethiopian Traditional Wear
+            </div>
+            <div class="countdown">
+                <span>Ends in:</span>
+                <div class="countdown-item" id="countdown-hours">24</div>
+                <span>:</span>
+                <div class="countdown-item" id="countdown-minutes">59</div>
+                <span>:</span>
+                <div class="countdown-item" id="countdown-seconds">59</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" id="home-link">
+                    <i class="fas fa-tshirt"></i>
+                    <h1>FITZONE</h1>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                    <li>
+                        <a href="#categories" class="nav-link" data-section="categories">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#products" data-filter="all">All Products</a>
+                            <a href="#products" data-filter="traditional">Traditional Wear</a>
+                            <a href="#products" data-filter="men">Men's Fashion</a>
+                            <a href="#products" data-filter="women">Women's Fashion</a>
+                            <a href="#products" data-filter="kids">Kids' Collection</a>
+                            <a href="#products" data-filter="fitness">Fitness Apparel</a>
+                            <a href="#products" data-filter="new">New Arrivals</a>
+                            <a href="#products" data-filter="trending">Trending Now</a>
+                            <a href="#products" data-filter="sale">Sale Items</a>
+                        </div>
+                    </li>
+                    <li><a href="#products" class="nav-link" data-section="products">Products</a></li>
+                    <li><a href="#delivery" class="nav-link" data-section="delivery">Delivery</a></li>
+                    <li><a href="#booking" class="nav-link" data-section="booking">Tailoring</a></li>
+                    <li><a href="#testimonials" class="nav-link" data-section="testimonials">Reviews</a></li>
+                    <li><a href="#comparison" class="nav-link" data-section="comparison">Compare</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                </ul>
+
+                <div class="nav-buttons">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products..." id="search-input">
+                        <button class="search-btn" id="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="nav-icon wishlist-icon" id="wishlist-icon">
+                        <i class="fas fa-heart"></i>
+                        <span class="wishlist-count">0</span>
+                    </div>
+                    <div class="nav-icon cart-icon" id="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="nav-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-header">
+            <h3><i class="fas fa-shopping-bag"></i> Shopping Cart</h3>
+            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-modal-content" id="cart-modal-content">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-modal-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount" id="cart-total-amount">0 ETB</span>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-yellow" id="view-cart-details">View Cart Details</button>
+                <button class="btn" id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <input type="text" placeholder="Search for products..." id="modal-search-input" autofocus>
+                <button class="btn" id="modal-search-btn">Search</button>
+            </div>
+            <div class="search-results" id="search-results">
+                <div class="no-results">
+                    <i class="fas fa-search fa-2x" style="color: #ccc; margin-bottom: 15px;"></i>
+                    <p>Start typing to search products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-content">
+            <button class="close-product-modal" id="close-payment-modal"><i class="fas fa-times"></i></button>
+            <h2>Complete Your Purchase</h2>
+            <p>Secure payment with Ethiopian payment methods</p>
+
+            <div class="payment-steps">
+                <div class="payment-step active" id="step-1">
+                    <div class="step-number">1</div>
+                    <div>Delivery Info</div>
+                </div>
+                <div class="payment-step" id="step-2">
+                    <div class="step-number">2</div>
+                    <div>Payment Method</div>
+                </div>
+                <div class="payment-step" id="step-3">
+                    <div class="step-number">3</div>
+                    <div>Confirmation</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Delivery Information -->
+            <div class="payment-form active" id="delivery-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="+251 91 234 5678" pattern="[+251]{4}[0-9]{9}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="region">Region *</label>
+                    <select id="region" required>
+                        <option value="">Select Region</option>
+                        <option value="addis">Addis Ababa</option>
+                        <option value="amhara">Amhara</option>
+                        <option value="oromia">Oromia</option>
+                        <option value="snnpr">SNNPR</option>
+                        <option value="tigray">Tigray</option>
+                        <option value="somali">Somali</option>
+                        <option value="afar">Afar</option>
+                        <option value="dire">Dire Dawa</option>
+                        <option value="harari">Harari</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" rows="3" placeholder="Street address, building, floor, etc."
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="delivery-note">Delivery Instructions (Optional)</label>
+                    <textarea id="delivery-note" rows="2"
+                        placeholder="Any special instructions for delivery"></textarea>
+                </div>
+                <div class="payment-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="order-subtotal">0 ETB</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping:</span>
+                        <span id="order-shipping">FREE</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax (15%):</span>
+                        <span id="order-tax">0 ETB</span>
+                    </div>
+                    <div class="summary-item summary-total">
+                        <span>Total:</span>
+                        <span id="order-total">0 ETB</span>
+                    </div>
+                </div>
+                <button class="btn" id="next-to-payment" style="margin-top: 20px; width: 100%;">Next: Payment
+                    Method</button>
+            </div>
+
+            <!-- Step 2: Payment Method -->
+            <div class="payment-form" id="payment-method-form">
+                <h3>Select Payment Method</h3>
+                <p>Choose your preferred payment method</p>
+
+                <div class="payment-methods">
+                    <div class="payment-method" data-method="cbe">
+                        <i class="fas fa-university"></i>
+                        <h4>CBE</h4>
+                        <p>Commercial Bank of Ethiopia</p>
+                    </div>
+                    <div class="payment-method" data-method="telebirr">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>TeleBirr</h4>
+                        <p>Ethio Telecom Mobile Money</p>
+                    </div>
+                    <div class="payment-method" data-method="mbirr">
+                        <i class="fas fa-wallet"></i>
+                        <h4>M-Birr</h4>
+                        <p>Mobile Payment Service</p>
+                    </div>
+                    <div class="payment-method" data-method="cash">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Cash on Delivery</h4>
+                        <p>Pay when order arrives</p>
+                    </div>
+                    <div class="payment-method" data-method="awash">
+                        <i class="fas fa-landmark"></i>
+                        <h4>Awash Bank</h4>
+                        <p>Digital Banking</p>
+                    </div>
+                    <div class="payment-method" data-method="dashen">
+                        <i class="fas fa-building"></i>
+                        <h4>Dashen Bank</h4>
+                        <p>Digital Payment</p>
+                    </div>
+                </div>
+
+                <!-- CBE Payment Form -->
+                <div class="payment-details" id="cbe-details" style="display: none; margin-top: 20px;">
+                    <h4>CBE Payment Details</h4>
+                    <div class="form-group">
+                        <label for="cbe-account">Account Number *</label>
+                        <input type="text" id="cbe-account" placeholder="Enter your CBE account number">
+                    </div>
+                    <div class="form-group">
+                        <label for="cbe-branch">Branch *</label>
+                        <input type="text" id="cbe-branch" placeholder="Branch name">
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-info-circle"></i> You will be redirected to CBE's secure payment portal
+                    </p>
+                </div>
+
+                <!-- TeleBirr Payment Form -->
+                <div class="payment-details" id="telebirr-details" style="display: none; margin-top: 20px;">
+                    <h4>TeleBirr Payment</h4>
+                    <div class="form-group">
+                        <label for="telebirr-phone">TeleBirr Phone Number *</label>
+                        <input type="tel" id="telebirr-phone" placeholder="+251 91 234 5678">
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-info-circle"></i> You will receive a USSD prompt on your phone
+                    </p>
+                </div>
+
+                <!-- Cash on Delivery -->
+                <div class="payment-details" id="cash-details" style="display: none; margin-top: 20px;">
+                    <h4>Cash on Delivery</h4>
+                    <p>Pay with cash when your order arrives at your doorstep.</p>
+                    <div class="form-group">
+                        <label for="cash-change">Exact Change Required?</label>
+                        <select id="cash-change">
+                            <option value="no">No, driver can give change</option>
+                            <option value="yes">Yes, exact amount ready</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Other payment method details -->
+                <div class="payment-details" id="other-details" style="display: none; margin-top: 20px;">
+                    <h4 id="other-title">Payment Details</h4>
+                    <p id="other-description">Please prepare payment through the selected method.</p>
+                    <div class="form-group">
+                        <label for="transaction-id">Transaction Reference (Optional)</label>
+                        <input type="text" id="transaction-id" placeholder="Enter transaction reference if any">
+                    </div>
+                </div>
+
+                <div class="payment-summary" style="margin-top: 30px;">
+                    <div class="summary-item">
+                        <span>Order Total:</span>
+                        <span id="payment-total">0 ETB</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Payment Method:</span>
+                        <span id="selected-method">Not selected</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn btn-view-more" id="back-to-delivery" style="flex: 1;">Back</button>
+                    <button class="btn" id="confirm-payment" style="flex: 1;">Confirm & Pay</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Processing -->
+            <div class="payment-form" id="processing-form" style="text-align: center; display: none;">
+                <div class="confirmation-icon">
+                    <i class="fas fa-cog fa-spin"></i>
+                </div>
+                <h3>Processing Payment</h3>
+                <p>Please wait while we process your payment...</p>
+                <div id="processing-status" style="margin: 20px 0;">
+                    <div style="background: #f0f0f0; border-radius: 20px; height: 10px; overflow: hidden;">
+                        <div id="processing-bar"
+                            style="width: 0%; height: 100%; background: green; transition: width 0.5s ease;"></div>
+                    </div>
+                    <p id="processing-text" style="margin-top: 10px;">Initializing payment...</p>
+                </div>
+                <p style="font-size: 0.9rem; color: #666;">Do not close this window or refresh the page</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmation-modal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for your purchase. Your order has been successfully placed.</p>
+
+            <div class="order-id" id="order-id-display">
+                ORDER #ET123456
+            </div>
+
+            <div style="text-align: left; margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 15px;">
+                <h4>Order Details:</h4>
+                <p id="order-summary-details">3 items • Total: 8,500 ETB</p>
+                <p id="order-delivery-info">Delivery to: Addis Ababa, 2-3 days</p>
+                <p id="order-payment-method">Payment: CBE Bank Transfer</p>
+            </div>
+
+            <p style="margin: 20px 0;">
+                <i class="fas fa-envelope" style="color:blue;"></i>
+                A confirmation email has been sent to your email address.
+            </p>
+
+            <div style="display: flex; gap: 10px; margin-top: 30px;">
+                <button class="btn btn-view-more" id="track-order-btn">
+                    <i class="fas fa-map-marker-alt"></i> Track Order
+                </button>
+                <button class="btn" id="continue-shopping-btn">
+                    <i class="fas fa-shopping-bag"></i> Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab whatsapp" id="whatsapp-fab">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="fab quick-shop" id="quick-shop-fab">
+            <i class="fas fa-bolt"></i>
+        </button>
+    </div>
+
+    <!-- Newsletter Popup -->
+    <div class="newsletter-popup" id="newsletter-popup">
+        <div class="newsletter-popup-content">
+            <button class="popup-close" id="popup-close"><i class="fas fa-times"></i></button>
+            <h2>Welcome to FITZONE!</h2>
+            <p>Subscribe to our newsletter and get</p>
+            <div class="popup-offer">10% OFF</div>
+            <p>your first order</p>
+            <form id="popup-newsletter-form">
+                <input type="email" placeholder="Enter your email" required
+                    style="width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ddd; border-radius: 30px;">
+                <button type="submit" class="btn" style="width: 100%;">Subscribe & Get Discount</button>
+            </form>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">By subscribing, you agree to our Privacy Policy
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Authentic Ethiopian Fashion</h1>
+                    <p>Shop premium Ethiopian clothing with nationwide delivery across all regions of Ethiopia. From
+                        traditional Habesha Kemis to modern fashion trends.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn nav-link" data-section="products">Shop Now</a>
+                        <a href="#delivery" class="btn btn-yellow nav-link" data-section="delivery">Delivery Info</a>
+                        <button class="btn" id="view-size-guide">Size Guide</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Shop With FITZONE</h2>
+                    <p>Ethiopia's premier online clothing destination</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Nationwide Delivery</h3>
+                        <p>Fast delivery to all regions of Ethiopia</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3>Authentic Ethiopian</h3>
+                        <p>Genuine traditional and modern Ethiopian wear</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Payment</h3>
+                        <p>Safe payment with CBE, Tele Birr & M-Pesa</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy across Ethiopia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories" id="categories-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Shop by Category</h2>
+                    <p>Explore our wide range of Ethiopian clothing categories</p>
+                </div>
+
+                <div class="categories-grid">
+                    <div class="category-card" data-filter="traditional">
+                        <div class="category-img"
+                            style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/13.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="category-overlay">
+                            <h3>Traditional Wear</h3>
+                            <p>Shop Now</p>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-filter="men">
+                        <div class="category-img"
+                            style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/11.avif'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="category-overlay">
+                            <h3>Men's Fashion</h3>
+                            <p>Shop Now</p>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-filter="women">
+                        <div class="category-img"
+                            style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/10.avif'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="category-overlay">
+                            <h3>Women's Fashion</h3>
+                            <p>Shop Now</p>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-filter="kids">
+                        <div class="category-img"
+                            style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/16.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="category-overlay">
+                            <h3>Kids Collection</h3>
+                            <p>Shop Now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Other Sections (Hidden by default, shown when navigating) -->
+    <div id="dynamic-content" style="display: none;">
+        <!-- Content will be loaded here dynamically -->
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact-section" style="display: none;">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>FITZONE</h4>
+                    <p>Ethiopia's premier online clothing store, <br>delivering authentic Ethiopian fashion nationwide.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                        <li><a href="#products" class="nav-link" data-section="products">Products</a></li>
+                        <li><a href="#categories" class="nav-link" data-section="categories">Categories</a></li>
+                        <li><a href="#delivery" class="nav-link" data-section="delivery">Delivery Areas</a></li>
+                        <li><a href="#testimonials" class="nav-link" data-section="testimonials">Reviews</a></li>
+                        <li><a href="#comparison" class="nav-link" data-section="comparison">Compare Products</a></li>
+                        <li><a href="#contact" class="nav-link" data-section="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#contact" class="nav-link" data-section="contact">Contact Us</a></li>
+                        <li><a href="#" id="size-guide-link">Size Guide</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +251 91 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@fitzone.com</p>
+                    <p><i class="fas fa-whatsapp"></i> +251 92 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nationwide Delivery Across Ethiopia</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 8:00 PM</p>
+                    <!-- Payment Methods -->
+                    <div class="payment-methods-footer">
+                        <span style="color: #FCDD09; font-weight: bold;">CBE</span>
+                        <span style="color: #078930; font-weight: bold;">TeleBirr</span>
+                        <span style="color: #DA1212; font-weight: bold;">M-Birr</span>
+                        <span style="color: #0F47AF; font-weight: bold;">Awash</span>
+                        <span style="color: #222831; font-weight: bold;">Dashen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 FITZONE - Ethiopian Online Clothing Store. All Rights Reserved.</p>
+                <p style="margin-top: 10px;">Made with <i class="fas fa-heart" style="color: #DA1212;"></i> in Ethiopia
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="product-modal">
+        <button class="close-product-modal" id="close-product-modal"><i class="fas fa-times"></i></button>
+        <div class="product-modal-content" id="product-modal-content">
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
